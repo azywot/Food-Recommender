@@ -1,2 +1,2 @@
-# interactive-dashboard
+# Food Recommender
 Interactive dashboard designed to compare one's food choices with others

@@ -1,12 +1,15 @@
 ## ui.R ##
 library(shinydashboard)
 library(shinydashboardPlus)
-source('tabs/ui/utils.R')
+library(readr)
+library(miceadds) #for multiple source files
+source.all("tabs/ui/")
 
 COLOR <- "yellow"
+all_chosen <- c()
 
 header <- dashboardHeader(
-    title = span("Food Recommender  ", tagList(icon("utensils"))),
+    title = span(tagList(icon("utensils"), " Food Recommender" )),
     titleWidth = 310,
     tags$li(a(href = 'https://www.put.poznan.pl',
               img(src = 'logo.png', height = "30px"),
@@ -18,10 +21,10 @@ header <- dashboardHeader(
 sidebar <- dashboardSidebar(
     width = 310,
     sidebarMenu(
+      id = "mySidebar",
       menuItem("About", tabName = "about", icon = icon("book")),
       menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard")),
-      menuItem("Widgets", tabName = "widgets", icon = icon("th"))
-    )
+      menuItem("Students dataset", tabName = "students", icon = icon("graduation-cap")))
   )
 
 body <- dashboardBody(
@@ -32,31 +35,21 @@ body <- dashboardBody(
       
       # About tab
       aboutTabItem(),
-      
       # Dashboard tab
-      tabItem(tabName = "dashboard",
-              fluidRow(
-                
-                mainPanel(
-                  tabsetPanel(
-                    tabPanel("Plot", plotOutput("plot")), 
-                    tabPanel("Summary", verbatimTextOutput("summary")), 
-                    tabPanel("Table", tableOutput("table"))
-                  )
-                ),
-                
-                box(plotOutput("plot1", height = 250)),
-                
-                box(
-                  title = "Controls",
-                  sliderInput("slider", "Number of observations:", 1, 100, 50)
-                )
-              )
-      ),
+      dashboardTabItem(),
       
-      # Widgets tab
-      tabItem(tabName = "widgets",
-              h2("Widgets tab content")
+      # Students dataset tab
+      tabItem(tabName = "students",
+          h2("Dataset analysis - attributes distribution"),
+          fluidRow(
+            mainPanel(
+              tabsetPanel(
+                tabPanel("Plot", plotOutput("plot")), 
+                tabPanel("Summary", verbatimTextOutput("summary")), 
+                tabPanel("Table", tableOutput("table"))
+              )
+            )
+        )   
       )
     )
   )

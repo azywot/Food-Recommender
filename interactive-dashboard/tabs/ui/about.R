@@ -2,7 +2,7 @@ aboutTabItem <- function(){
   return(
     tabItem(
       tabName = "about",
-      box(title = "About",
+      box(title = tags$b("About"),
           status = "warning",
           solidHeader = F,
           width = 12,

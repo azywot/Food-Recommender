@@ -1,0 +1,13 @@
+name: interactive-dashboard
+title: interactive-dashboard
+username:
+account: azywot
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 6388492
+bundleId: 5956691
+url: https://azywot.shinyapps.io/interactive-dashboard/
+when: 1653823293.16242
+lastSyncTime: 1653823293.16242
+asMultiple: FALSE
+asStatic: FALSE

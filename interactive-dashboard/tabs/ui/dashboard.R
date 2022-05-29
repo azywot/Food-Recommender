@@ -39,7 +39,7 @@ dashboardTabItem <- function(){
           sliderInput("sliderGPA", tags$b("GPA"),
                       min = 2, max = 5, step = 0.2, value = c(0,5)),
           sliderInput("sliderHEALTH", tags$b("Health assesment"),
-                      min = 0, max = 10, step = 1, value = c(0,10)),
+                      min = 1, max = 10, step = 1, value = c(0,10)),
           
           checkboxGroupInput("checkGroupReason",
                              tags$b("Food choice reason"),

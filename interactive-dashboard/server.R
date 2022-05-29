@@ -28,10 +28,13 @@ function(input, output, session) {
   })
   
   
+
   dataInput <- reactive({
     getDataFrame(data = dataFOOD,
-                 gender = input$selectGender)
-    
+                 gender = input$selectGender,
+                 gpaRange = input$sliderGPA,
+                 healthLevel = input$sliderHEALTH,
+                 selectedReasons = input$checkGroupReason)
   })
   
   
@@ -45,9 +48,4 @@ function(input, output, session) {
         "Comfort food",
         backgroundColor = "orange")
   })
-  
-  output$testText <- renderText({ 
-    paste("My first server data " , input$sliderGPA[1], "-", input$sliderGPA[2] )
-  })
-  
 }

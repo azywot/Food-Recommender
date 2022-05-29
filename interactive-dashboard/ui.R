@@ -1,12 +1,11 @@
 ## ui.R ##
 library(shinydashboard)
-library(shinydashboardPlus)
-library(readr)
+library(shinydashboardPlus) #footer
+library(readr) #read files
 library(miceadds) #for multiple source files
 source.all("tabs/ui/")
 
 COLOR <- "yellow"
-all_chosen <- c()
 
 header <- dashboardHeader(
     title = span(tagList(icon("utensils"), " Food Recommender" )),

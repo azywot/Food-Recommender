@@ -3,6 +3,7 @@ library(shiny)
 library(shinydashboard)
 library(DT)
 library(dplyr)
+library(ggplot2)
 library(stringr)
 library(miceadds) # for multiple source files
 source.all("tabs/server/")
@@ -55,12 +56,8 @@ function(input, output, session) {
   })
 
   # cuisines correlations
-  plot_input <- reactive({
+  output$cuisine_cor <- renderPlot({
     get_cor_plot(cuisine1 = input$select_cuisine1,
                  cuisine2 = input$select_cuisine2)
-  })
-
-  output$cuisine_cor <- renderPlot({
-    cuisine_cor(plot_input())
   })
 }

@@ -55,11 +55,7 @@ get_cor_plot <- function(cuisine1, cuisine2) {
 
   p <- ggplot(data, aes(x = cuisine1, y = cuisine2, size = weight, color = diet_current_coded)) +
     geom_jitter() +
-    labs(
-      title = "Correlation between cuisines",
-      subtitle = "bla bla",
-      color = "current diet"
-    ) +
+    labs(color = "current diet") +
     scale_color_manual(values = c("#addd8e", "#fec44f", "#ffeda0", "#fc9272"))
   return(p)
 }

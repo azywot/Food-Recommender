@@ -1,8 +1,7 @@
 cuisinesTabItem <- function() {
   specific_cuisines <- c("ethnic_food", "greek_food", "indian_food",
                          "italian_food", "persian_food", "thai_food")
-  all_cuisines <- c("cuisine", "fav_cuisine_coded", "weight",
-                    "diet_current_coded", specific_cuisines)
+  all_cuisines <- c("cuisine", "fav_cuisine_coded", specific_cuisines)
 
   return(
     tabItem(

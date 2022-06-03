@@ -25,6 +25,7 @@ sidebar <- dashboardSidebar(
     id = "mySidebar",
     menuItem("About", tabName = "about", icon = icon("book")),
     menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard")),
+    menuItem("Cuisines", tabName = "cuisines", icon = icon("apple")),
     menuItem("Students dataset", tabName = "students", icon = icon("graduation-cap"))
   )
 )

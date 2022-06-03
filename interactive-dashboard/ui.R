@@ -40,6 +40,8 @@ body <- dashboardBody(
     # Dashboard tab
     dashboardTabItem(),
 
+    cuisinesTabItem(),
+
     # Students dataset tab
     tabItem(
       tabName = "students",

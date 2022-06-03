@@ -53,4 +53,14 @@ function(input, output, session) {
         backgroundColor = "orange"
       )
   })
+
+  # cuisines correlations
+  plot_input <- reactive({
+    get_cor_plot(cuisine1 = input$select_cuisine1,
+                 cuisine2 = input$select_cuisine2)
+  })
+
+  output$cuisine_cor <- renderPlot({
+    cuisine_cor(plot_input())
+  })
 }

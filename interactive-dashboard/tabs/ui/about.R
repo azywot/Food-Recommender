@@ -18,7 +18,7 @@ aboutTabItem <- function() {
             br(),
             em(a("Kaggle Dataset", href = "https://www.kaggle.com/datasets/borapajo/food-choices", "\n", )),
             br(),
-            em(a("Github repository", href = "https://github.com/azywot/Food-Recommender"))
+            em(a("GitHub repository", href = "https://github.com/azywot/Food-Recommender"))
           ),
           column(
             width = 4, align = "right",

@@ -7,8 +7,9 @@ get_cor_plot <- function(cuisine1, cuisine2) {
   columns <- c("cuisine", "fav_cuisine_coded", "weight", "diet_current_coded", specific_cuisines)
   data <- select(food, columns)
   data <- data.frame(data)
+  data <- rename(data, "childhood_cuisine" = "cuisine")
 
-  data$cuisine <- recode(data$cuisine,
+  data$childhood_cuisine <- recode(data$childhood_cuisine,
     `1` = "American",
     `2` = "Mexican/Spanish",
     `3` = "Korean/Asian",
@@ -53,13 +54,11 @@ get_cor_plot <- function(cuisine1, cuisine2) {
   data <- mutate(data, weight = as.integer(weight))
 
 
-  p <- ggplot(data, aes(x = data[, cuisine1], y = data[, cuisine2], size = weight, color = diet_current_coded)) +
-    geom_jitter() +
-    labs(
-      color = "current diet",
-      x = cuisine1,
-      y = cuisine2
-    ) +
+  p <- ggplot(data, aes(x = data[,cuisine1], y = data[,cuisine2], size = weight, color = diet_current_coded)) +
+    geom_jitter(width = 0.2, height = 0.2) +
+    labs(color = "current diet",
+         x = cuisine1,
+         y = cuisine2) +
     scale_color_manual(values = c("#addd8e", "#fec44f", "#ffeda0", "#fc9272"))
   return(p)
 }

@@ -57,7 +57,14 @@ function(input, output, session) {
 
   # cuisines correlations
   output$cuisine_cor <- renderPlot({
-    get_cor_plot(cuisine1 = input$select_cuisine1,
-                 cuisine2 = input$select_cuisine2)
+    get_cor_plot(
+      cuisine1 = input$select_cuisine1,
+      cuisine2 = input$select_cuisine2
+    )
+  })
+
+  # calories guessing
+  output$calories_plot <- renderPlot({
+    get_calories_plot(type = input$answers, guess = input$guess_calories)
   })
 }

@@ -3,6 +3,7 @@ library(shinydashboard)
 library(shinydashboardPlus) # footer
 library(readr) # read files
 library(miceadds) # for multiple source files
+library(flexdashboard)
 source.all("tabs/ui/")
 
 COLOR <- "yellow"
@@ -38,9 +39,11 @@ body <- dashboardBody(
 
     # About tab
     aboutTabItem(),
+    
     # Dashboard tab
     dashboardTabItem(),
 
+    # Cuisine tab
     cuisinesTabItem(),
 
     # Students dataset tab

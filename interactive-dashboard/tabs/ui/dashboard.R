@@ -8,24 +8,32 @@ dashboardTabItem <- function() {
 
       # DATAFRAME
       fluidRow(
-        tags$head(tags$style(HTML(".small-box {height: 100px}"))),
-        valueBox(
+        tags$head(tags$style(HTML(".small-box {height: 120px}"))),
+        shinydashboard::box(
           width = 3,
-          tagList("TODO", tags$sup(style = "font-size: 20px", "%")),
-          "Approval Rating", icon = icon("line-chart"), color = COLOR
+          height = 120,
+          #tagList("TODO", tags$sup(style = "font-size: 20px", "%")),
+          #"Approval Rating", icon = icon("line-chart"), color = COLOR
+          flexdashboard::gaugeOutput("gauge2"),
         ),
-        valueBox(
+        shinydashboard::box(
           width = 3,
-          tagList("TODO", tags$sup(style = "font-size: 20px", "%")),
-          "Approval Rating", icon = icon("line-chart"), color = COLOR
+          height = 120,
+          #tagList("TODO", tags$sup(style = "font-size: 20px", "%")),
+          #"Approval Rating", icon = icon("line-chart"), color = COLOR
+          flexdashboard::gaugeOutput("gauge1"),
         ),
-        valueBox(
+        shinydashboard::valueBox(
           width = 3,
-          "TODO", "Progress", icon = icon("users"), color = COLOR
+          tagList(tags$sup(style = "font-size: 15px", "How often do you cook?")), 
+          textOutput("cook_how_often"),
+          icon = icon("users"), color = COLOR
         ),
-        valueBox(
+        shinydashboard::valueBox(
           width = 3,
-          "TODO", "Progress", icon = icon("users"), color = COLOR
+          tagList(tags$sup(style = "font-size: 15px", "Eating out per week")), 
+          textOutput("eating_out"),
+          icon = icon("users"), color = COLOR
         )
       ),
       fluidRow(

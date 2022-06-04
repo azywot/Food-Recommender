@@ -1,8 +1,10 @@
 reasons <- c("stress", "boredom", "sadness", "hunger", "laziness", "cold weather", "happiness", "watching tv", "none")
 
+
+
 readDataFOOD <- function() {
   data <- read.csv("data/food_coded.csv")
-  columns_table <- c("Gender", "GPA", "comfort_food_reasons_coded", "healthy_feeling", "comfort_food")
+  columns_table <- c("Gender", "GPA", "comfort_food_reasons_coded", "healthy_feeling", "comfort_food", "cook", "eating_out", "income", "pay_meal_out")
   res <- select(data, columns_table)
   res$comfort_food <- str_squish(toupper(res$comfort_food))
 
@@ -34,7 +36,6 @@ readDataFOOD <- function() {
   return(res)
 }
 
-# TODO - rozbi<U+FFFD> na mniejsze funkcje
 getDataFrame <- function(data, gender, gpaRange, healthLevel, selectedReasons) {
   if (gender != "-") {
     data <- filter(data, Gender == gender)

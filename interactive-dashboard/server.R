@@ -15,6 +15,8 @@ reasons <- c(
   "cold weather", "happiness", "watching tv", "none"
 )
 
+data_table_columns <- c("Gender", "GPA", "Reason", "Health", "Comfort food")
+
 function(input, output, session) {
   set.seed(122)
   histdata <- rnorm(500)
@@ -43,7 +45,7 @@ function(input, output, session) {
   })
 
   output$datatable <- DT::renderDataTable({
-    datatable(dataInput(),
+    datatable(select(dataInput(), data_table_columns),
       options = list(
         pageLength = 10,
         lengthMenu = c(5, 10, 15, 20)
@@ -53,6 +55,22 @@ function(input, output, session) {
         "Comfort food",
         backgroundColor = "orange"
       )
+  })
+  
+  output$cook_how_often <- renderText({
+    get_answer_cook(dataInput())
+  })
+  
+  output$eating_out <- renderText({
+    get_eating_out(dataInput())
+  })
+  
+  output$gauge1 <- flexdashboard::renderGauge({
+    get_gauge1(dataInput())
+  })
+  
+  output$gauge2 <- flexdashboard::renderGauge({
+    get_gauge2(dataInput())
   })
 
   # cuisines correlations

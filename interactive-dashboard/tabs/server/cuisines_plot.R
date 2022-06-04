@@ -53,9 +53,13 @@ get_cor_plot <- function(cuisine1, cuisine2) {
   data <- mutate(data, weight = as.integer(weight))
 
 
-  p <- ggplot(data, aes(x = cuisine1, y = cuisine2, size = weight, color = diet_current_coded)) +
+  p <- ggplot(data, aes(x = data[, cuisine1], y = data[, cuisine2], size = weight, color = diet_current_coded)) +
     geom_jitter() +
-    labs(color = "current diet") +
+    labs(
+      color = "current diet",
+      x = cuisine1,
+      y = cuisine2
+    ) +
     scale_color_manual(values = c("#addd8e", "#fec44f", "#ffeda0", "#fc9272"))
   return(p)
 }

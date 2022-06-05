@@ -59,6 +59,10 @@ function(input, output, session) {
   output$eating_out <- renderText({
     get_eating_out(dataInput())
   })
+  
+  output$exercise <- renderText({
+    get_exercise(dataInput())
+  })
 
   output$gauge_health <- flexdashboard::renderGauge({
     get_gauge_health(dataInput())

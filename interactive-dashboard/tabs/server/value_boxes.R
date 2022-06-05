@@ -7,13 +7,12 @@ get_answer_cook <- function(data) {
   # ans <- getmode(data$cook)
   ans <- mean(data$cook, na.rm = TRUE)
   result <- switch(as.character(round(ans)),
-    "1" = "Every day",
-    "2" = "A few times a week",
-    "3" = "Not very often",
-    "4" = "Barely/little",
-    "5" = "Never"
+                  "1" = "Every day",
+                  "2" = "A few times a week",
+                  "3" = "Not very often",
+                  "4" = "Barely/little",
+                  "5" = "Never"
   )
-  # return(paste(result, "\n", ans))
   return(result)
 }
 
@@ -21,11 +20,24 @@ get_eating_out <- function(data) {
   # ans <- getmode(data$eating_out)
   ans <- mean(data$cook, na.rm = TRUE)
   result <- switch(as.character(round(ans)),
-    "1" = "Never",
-    "2" = "1-2 times",
-    "3" = "2-3 times",
-    "4" = "3-5 times",
-    "5" = "every day"
+                  "1" = "Never",
+                  "2" = "1-2 times",
+                  "3" = "2-3 times",
+                  "4" = "3-5 times",
+                  "5" = "every day"
+  )
+  return(result)
+}
+
+get_exercise <- function(data) {
+  # ans <- getmode(data$exercise)
+  ans <- mean(data$exercise, na.rm = TRUE)
+  result <- switch(as.character(round(ans)),
+                   "1" = "Everyday", 
+                   "2" = "Twice or three times per week",
+                   "3" = "Once a week",
+                   "4" = "Sometimes", 
+                   "5" = "Never"
   )
   return(result)
 }

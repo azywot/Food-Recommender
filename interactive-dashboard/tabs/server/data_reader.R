@@ -1,4 +1,8 @@
 parse_data <- function() {
+    specific_cuisines <- c(
+      "ethnic_food", "greek_food", "indian_food", "italian_food",
+      "persian_food", "thai_food"
+    )
     data <- read.csv("data/food_coded.csv")
     # A
     data$comfort_food <- str_squish(toupper(data$comfort_food))
@@ -74,6 +78,47 @@ parse_data <- function() {
         .missing = "none"
     )
 
+    data$income = recode(data$income,
+                     '1' = '$15000',
+                     '2' = '$15000-$30000',
+                     '3' = '$30000-$50000',
+                     '4' = '$50000-$70000',
+                     '5' = '$70000-$100000',
+                     '6' = '>$100000',
+                     .missing = 'not stated')
+    
+    data$employment = recode(data$employment,
+                        '1' = "full time",
+                        '2' = "part time",
+                        '3' = "no",
+                        'nan' = "other",
+                        .missing = "other"
+    )
+    
+    data$eating_changes_coded = recode(data$eating_changes_coded,
+                                  '1' = 'worse',
+                                  '2' = 'better',
+                                  '3' = 'the same',
+                                  '4' = 'unclear'
+    )
+    
+    data$eating_out2 = recode(data$eating_out,
+                         '1' = '0',
+                         '2' = '1-2',
+                         '3' = '2-3',
+                         '4' = '3-5',
+                         '5' = 'everyday'
+    )
+    
+    data$exercise2 = recode(data$exercise,
+                      '1' = 'everyday',
+                      '2' = '2-3 times per week',
+                      '3' = 'once a week',
+                      '4' = 'sometimes',
+                      '5' = 'never',
+                      .missing = 'not stated'
+    )
+    
     for (sc in specific_cuisines) {
         data[, sc] <- recode(data[, sc],
             `1` = "1. very unlikely",

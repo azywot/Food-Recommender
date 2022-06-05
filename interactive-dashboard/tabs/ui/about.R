@@ -47,9 +47,7 @@ aboutTabItem <- function() {
               "selected_distr", tags$b("Selected attribute:"),
               choices = list(
                 'Gender',
-                'Employment',
                 'Income',
-                'Cook frequency',
                 'Cuisine childhood',
                 'Current diet',
                 'Comfort food reasons',

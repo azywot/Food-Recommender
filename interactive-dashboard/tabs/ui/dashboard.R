@@ -13,7 +13,7 @@ dashboardTabItem <- function() {
       
       # DATAFRAME
       fluidRow(
-        tags$head(tags$style(HTML(".small-box {height: 150px}"))),
+        tags$head(tags$style(HTML(".small-box {height: 110px}"))),
         shinydashboard::box(
           width = 3,
           height = 150,
@@ -24,20 +24,20 @@ dashboardTabItem <- function() {
         ),
         shinydashboard::valueBox(
           width = 3,
-          tagList(tags$b(style = "font-size: 15px","TODO")),
-          "Jeszcze jedno pytanie",
-          icon = icon("question"), color = COLOR
-        ),
-        shinydashboard::valueBox(
-          width = 3,
           tagList(tags$b(style = "font-size: 15px","How often do you cook?")),
           textOutput("cook_how_often"),
           icon = icon("question"), color = COLOR
         ),
         shinydashboard::valueBox(
           width = 3,
-          tagList(tags$b(style = "font-size: 15px","Eating out per week:")), 
+          tagList(tags$b(style = "font-size: 15px","How often do you eat out?")), 
           textOutput("eating_out"),
+          icon = icon("question"), color = COLOR
+        ),
+        shinydashboard::valueBox(
+          width = 3,
+          tagList(tags$b(style = "font-size: 15px","How often do you exercise?")),
+          textOutput("exercise"),
           icon = icon("question"), color = COLOR
         )
       ),

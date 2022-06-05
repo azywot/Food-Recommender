@@ -4,6 +4,7 @@ library(shinydashboard)
 library(DT)
 library(dplyr)
 library(ggplot2)
+library(plotly)
 library(treemapify)
 library(stringr)
 library(miceadds) # for multiple source files
@@ -71,7 +72,7 @@ function(input, output, session) {
 
   data <- parse_data()
   # cuisines correlations
-  output$cuisine_cor <- renderPlot({
+  output$cuisine_cor <- renderPlotly({
     get_cor_plot(
       data = data,
       cuisine1 = input$select_cuisine1,

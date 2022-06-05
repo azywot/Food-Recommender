@@ -4,6 +4,7 @@ library(shinydashboardPlus) # footer
 library(readr) # read files
 library(miceadds) # for multiple source files
 library(flexdashboard)
+library(plotly)
 source.all("tabs/ui/")
 
 COLOR <- "yellow"

@@ -9,7 +9,7 @@ cuisinesTabItem <- function() {
     tabItem(
       tabName = "cuisines",
       h2("Which cuisine do you fancy?"),
-      p("See how much likely people eat different cuisine and get inspired!"),
+      p("See how much likely people eat different cuisines and get inspired!"),
       # correlations
       fluidRow(
         # selectors
@@ -27,7 +27,7 @@ cuisinesTabItem <- function() {
         box(
           title = tags$b("Cuisines correlations"),
           width = 9,
-          plotOutput("cuisine_cor")
+          plotlyOutput("cuisine_cor")
         )
       )
     )

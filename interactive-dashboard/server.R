@@ -11,15 +11,11 @@ library(miceadds) # for multiple source files
 library(ggthemes)
 source.all("tabs/server/")
 
-# data <- read.csv("data/food_coded.csv")
-dataFOOD <- readDataFOOD()
-data <- parse_data()
-
+data <- parse_data2()
 reasons <- c(
   "stress", "boredom", "sadness", "hunger", "laziness",
   "cold weather", "happiness", "watching tv", "none"
 )
-
 data_table_columns <- c("Gender", "GPA", "Reason", "Health", "Comfort food")
 
 function(input, output, session) {
@@ -35,7 +31,7 @@ function(input, output, session) {
 
   dataInput <- reactive({
     getDataFrame(
-      data = dataFOOD,
+      data = data,
       gender = input$selectGender,
       gpaRange = input$sliderGPA,
       healthLevel = input$sliderHEALTH,
@@ -73,7 +69,6 @@ function(input, output, session) {
   })
 
   # CUISINE TAB
-  #data <- parse_data()
   # cuisines correlations
   output$cuisine_cor <- renderPlotly({
     get_cor_plot(
@@ -92,17 +87,15 @@ function(input, output, session) {
   output$health_plot <- renderPlot({
     get_health_plot(data = data, drink_opt = input$chosen_drink)
   })
-  
-  
-  #STUDENTS TAB
+
+  # STUDENTS TAB
   output$selected_distr <- renderText({
     paste(input$selected_distr, " - distribution")
   })
-  
+
   output$plot_selected_attr <- renderPlot({
-    get_distribution_plot(dataFOOD, input$selected_distr)
-    
-    #attr <- input$selected_distr
+    get_distribution_plot(data, input$selected_distr)
+
+    # attr <- input$selected_distr
   })
-  
 }

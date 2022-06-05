@@ -8,10 +8,12 @@ library(plotly)
 library(treemapify)
 library(stringr)
 library(miceadds) # for multiple source files
+library(ggthemes)
 source.all("tabs/server/")
 
 # data <- read.csv("data/food_coded.csv")
 dataFOOD <- readDataFOOD()
+data <- parse_data()
 reasons <- c(
   "stress", "boredom", "sadness", "hunger", "laziness",
   "cold weather", "happiness", "watching tv", "none"
@@ -20,8 +22,8 @@ reasons <- c(
 data_table_columns <- c("Gender", "GPA", "Reason", "Health", "Comfort food")
 
 function(input, output, session) {
-  set.seed(23) # is it needed?
 
+  # COMFORT FOOD TAB
   observeEvent(input$all, {
     updateCheckboxGroupInput(
       session, "checkGroupReason",
@@ -30,7 +32,6 @@ function(input, output, session) {
     )
   })
 
-  # data table
   dataInput <- reactive({
     getDataFrame(
       data = dataFOOD,
@@ -70,7 +71,8 @@ function(input, output, session) {
     get_gauge2(dataInput())
   })
 
-  data <- parse_data()
+  # CUISINE TAB
+  #data <- parse_data()
   # cuisines correlations
   output$cuisine_cor <- renderPlotly({
     get_cor_plot(
@@ -89,4 +91,17 @@ function(input, output, session) {
   output$health_plot <- renderPlot({
     get_health_plot(data = data, drink_opt = input$chosen_drink)
   })
+  
+  
+  #STUDENTS TAB
+  output$selected_distr <- renderText({
+    paste(input$selected_distr, " - distribution")
+  })
+  
+  output$plot_selected_attr <- renderPlot({
+    get_distribution_plot(dataFOOD, input$selected_distr)
+    
+    #attr <- input$selected_distr
+  })
+  
 }

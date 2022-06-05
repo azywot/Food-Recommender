@@ -1,6 +1,8 @@
 readDataFOOD <- function() {
     data <- read.csv("data/food_coded.csv")
-    columns_table <- c("Gender", "GPA", "comfort_food_reasons_coded", "healthy_feeling", "comfort_food", "cook", "eating_out", "income", "pay_meal_out")
+    columns_table <- c("Gender", "GPA", "comfort_food_reasons_coded", 
+                       "healthy_feeling", "comfort_food", "cook", "eating_out", 
+                       "income", "pay_meal_out", "employment")
     res <- select(data, columns_table)
     res$comfort_food <- str_squish(toupper(res$comfort_food))
 

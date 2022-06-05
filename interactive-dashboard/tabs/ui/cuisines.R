@@ -13,7 +13,7 @@ cuisinesTabItem <- function() {
       fluidRow(
         # selectors
         box(
-          title = tags$b("Filter the data"),
+          title = tags$b("Choose cuisines"),
           width = 3,
           selectInput("select_cuisine1", tags$b("Select 1st cuisine"),
             choices = all_cuisines, selected = "indian_food"

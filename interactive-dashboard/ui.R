@@ -27,6 +27,7 @@ sidebar <- dashboardSidebar(
     menuItem("About", tabName = "about", icon = icon("book")),
     menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard")),
     menuItem("Cuisines", tabName = "cuisines", icon = icon("apple")),
+    menuItem("Health", tabName = "health", icon = icon("bacteria")),
     menuItem("Students dataset", tabName = "students", icon = icon("graduation-cap"))
   )
 )
@@ -36,15 +37,10 @@ body <- dashboardBody(
     tags$link(rel = "stylesheet", type = "text/css", href = "custom.css")
   ),
   tabItems(
-
-    # About tab
     aboutTabItem(),
-    
-    # Dashboard tab
     dashboardTabItem(),
-
-    # Cuisine tab
     cuisinesTabItem(),
+    healthTabItem(),
 
     # Students dataset tab
     tabItem(

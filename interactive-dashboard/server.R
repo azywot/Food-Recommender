@@ -4,6 +4,7 @@ library(shinydashboard)
 library(DT)
 library(dplyr)
 library(ggplot2)
+library(treemapify)
 library(stringr)
 library(miceadds) # for multiple source files
 source.all("tabs/server/")
@@ -18,8 +19,7 @@ reasons <- c(
 data_table_columns <- c("Gender", "GPA", "Reason", "Health", "Comfort food")
 
 function(input, output, session) {
-  set.seed(122)
-  histdata <- rnorm(500)
+  set.seed(23) # is it needed?
 
   observeEvent(input$all, {
     updateCheckboxGroupInput(
@@ -29,11 +29,7 @@ function(input, output, session) {
     )
   })
 
-  output$plot1 <- renderPlot({
-    data <- histdata[seq_len(input$slider)]
-    hist(data)
-  })
-
+  # data table
   dataInput <- reactive({
     getDataFrame(
       data = dataFOOD,
@@ -56,19 +52,19 @@ function(input, output, session) {
         backgroundColor = "orange"
       )
   })
-  
+
   output$cook_how_often <- renderText({
     get_answer_cook(dataInput())
   })
-  
+
   output$eating_out <- renderText({
     get_eating_out(dataInput())
   })
-  
+
   output$gauge1 <- flexdashboard::renderGauge({
     get_gauge1(dataInput())
   })
-  
+
   output$gauge2 <- flexdashboard::renderGauge({
     get_gauge2(dataInput())
   })
@@ -84,5 +80,10 @@ function(input, output, session) {
   # calories guessing
   output$calories_plot <- renderPlot({
     get_calories_plot(type = input$answers, guess = input$guess_calories)
+  })
+
+  # health plot
+  output$health_plot <- renderPlot({
+    get_health_plot(drink_opt = input$chosen_drink)
   })
 }

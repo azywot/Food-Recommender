@@ -69,9 +69,11 @@ function(input, output, session) {
     get_gauge2(dataInput())
   })
 
+  data <- parse_data()
   # cuisines correlations
   output$cuisine_cor <- renderPlot({
     get_cor_plot(
+      data = data,
       cuisine1 = input$select_cuisine1,
       cuisine2 = input$select_cuisine2
     )
@@ -79,11 +81,11 @@ function(input, output, session) {
 
   # calories guessing
   output$calories_plot <- renderPlot({
-    get_calories_plot(type = input$answers, guess = input$guess_calories)
+    get_calories_plot(data = data, type = input$answers, guess = input$guess_calories)
   })
 
   # health plot
   output$health_plot <- renderPlot({
-    get_health_plot(drink_opt = input$chosen_drink)
+    get_health_plot(data = data, drink_opt = input$chosen_drink)
   })
 }

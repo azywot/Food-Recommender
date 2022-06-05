@@ -1,21 +1,6 @@
-get_health_plot <- function(drink_opt) {
-    food <- read.csv("data/food_coded.csv")
+get_health_plot <- function(data, drink_opt) {
     columns <- c("ideal_diet_coded", "eating_out", "drink")
-    data <- select(food, columns)
-    data <- data.frame(data)
-
-    data$ideal_diet_coded <- recode(data$ideal_diet_coded,
-        `1` = "portion control",
-        `2` = "adding veggies",
-        `3` = "balance",
-        `4` = "less sugar",
-        `5` = "home cooked/organic",
-        `6` = "current diet",
-        `7` = "more protein",
-        `8` = "unclear",
-        .missing = "None"
-    )
-
+    data <- select(data, columns)
     data <- subset(data, drink != drink_opt)
 
     p <- ggplot(data, aes(area = eating_out, fill = ideal_diet_coded, subgroup = ideal_diet_coded)) +

@@ -1,9 +1,6 @@
-get_calories_plot <- function(type, guess) {
-    food <- read.csv("data/food_coded.csv")
+get_calories_plot <- function(data, type, guess) {
     columns <- c("calories_scone")
-    data <- select(food, columns)
-    data <- data.frame(data)
-    data <- mutate(data, calories_scone = as.character(calories_scone))
+    data <- select(data, columns)
     data <- subset(data, calories_scone != "NaN")
 
     p <- ggplot() +

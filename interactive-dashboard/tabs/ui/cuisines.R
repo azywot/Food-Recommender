@@ -8,7 +8,8 @@ cuisinesTabItem <- function() {
   return(
     tabItem(
       tabName = "cuisines",
-
+      h2("Which cuisine do you fancy?"),
+      p("See how much likely people eat different cuisine and get inspired!"),
       # correlations
       fluidRow(
         # selectors
@@ -26,33 +27,7 @@ cuisinesTabItem <- function() {
         box(
           title = tags$b("Cuisines correlations"),
           width = 9,
-          p("Hmm, what cuisine should I choose? Let's see the tastes of other people and decide"),
           plotOutput("cuisine_cor")
-        )
-      ),
-      # calories guessing
-      fluidRow(
-        box(
-          title = tags$b("Blueberry scone from Starbucks"),
-          width = 4,
-          img(src = "scone.png", width = 250, align = "center")
-        ),
-        # guess
-        box(
-          title = tags$b("Guess!"),
-          width = 4,
-          radioButtons("guess_calories", tags$b("How much calories are they in the scone?"),
-            choices = list("120 cal" = "120", "315 cal" = "315", "420 cal" = "420", "980 cal" = "980"),
-            selected = "120"
-          ),
-          actionButton("answers", label = "Show answers")
-        ),
-        # plot
-        box(
-          title = tags$b("Answers"),
-          width = 4,
-          p("Compare with others"),
-          plotOutput("calories_plot")
         )
       )
     )

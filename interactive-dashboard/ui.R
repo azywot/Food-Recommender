@@ -24,11 +24,10 @@ sidebar <- dashboardSidebar(
   width = 310,
   sidebarMenu(
     id = "mySidebar",
-    menuItem("About", tabName = "about", icon = icon("book")),
-    menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard")),
+    menuItem("About", tabName = "about", icon = icon("info")),
+    menuItem("Recommender", tabName = "dashboard", icon = icon("book")),
     menuItem("Cuisines", tabName = "cuisines", icon = icon("apple")),
-    menuItem("Health", tabName = "health", icon = icon("bacteria")),
-    menuItem("Students dataset", tabName = "students", icon = icon("graduation-cap"))
+    menuItem("Health", tabName = "health", icon = icon("bacteria"))
   )
 )
 
@@ -40,8 +39,7 @@ body <- dashboardBody(
     aboutTabItem(),
     dashboardTabItem(),
     cuisinesTabItem(),
-    healthTabItem(),
-    studentsTabItem()
+    healthTabItem()
   )
 )
 

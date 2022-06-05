@@ -13,6 +13,7 @@ source.all("tabs/server/")
 # data <- read.csv("data/food_coded.csv")
 dataFOOD <- readDataFOOD()
 data <- parse_data()
+
 reasons <- c(
   "stress", "boredom", "sadness", "hunger", "laziness",
   "cold weather", "happiness", "watching tv", "none"

@@ -2,8 +2,11 @@ aboutTabItem <- function() {
   return(
     tabItem(
       tabName = "about",
+      h2("About"),
+      br(),
+      fluidRow(
       box(
-        title = tags$b("About"),
+        title = tags$b("Dashboard"),
         status = "warning",
         solidHeader = F,
         width = 12,
@@ -25,7 +28,44 @@ aboutTabItem <- function() {
             img(src = "students.jpg", width = 250, align = "center")
           )
         )
+      )),
+      
+      fluidRow(
+      box(
+        title = tags$b("Dataset"),
+        status = "warning",
+        solidHeader = F,
+        width = 12,
+        fluidRow(
+          #column(width = 1),
+          column(
+            width = 5,
+            tags$b("Get to know the students!"),
+            
+            p("Select a criterion to see what is the distribution of students' features."),
+            selectInput(
+              "selected_distr", tags$b("Selected attribute:"),
+              choices = list(
+                'Gender',
+                'Employment',
+                'Income',
+                'Cook frequency',
+                'Cuisine childhood',
+                'Current diet',
+                'Comfort food reasons',
+                'Eating changes at college',
+                'Eating out per week',
+                'Exercise per week'
+              ), 
+              selected = 'Gender')
+            ),
+          #column(width = 1),
+          column(
+            width = 7,
+            plotOutput("plot_selected_attr")
+          )
+        )
       )
-    )
+    ))
   )
 }

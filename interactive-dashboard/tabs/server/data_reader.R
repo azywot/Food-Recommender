@@ -1,12 +1,12 @@
 readDataFOOD <- function() {
     data <- read.csv("data/food_coded.csv")
-    columns_table <- c("Gender", "GPA", "comfort_food_reasons_coded", 
-                       "healthy_feeling", "comfort_food", "cook", "eating_out", 
-                       "income", "pay_meal_out", "employment")
-    res <- select(data, columns_table)
-    res$comfort_food <- str_squish(toupper(res$comfort_food))
+    # columns_table <- c("Gender", "GPA", "comfort_food_reasons_coded", 
+    #                    "healthy_feeling", "comfort_food", "cook", "eating_out", 
+    #                    "income", "pay_meal_out", "employment")
+    # data <- select(data, columns_table)
+    data$comfort_food <- str_squish(toupper(data$comfort_food))
 
-    res <- res %>%
+    data <- data %>%
         rename(
             Reason = comfort_food_reasons_coded,
             Health = healthy_feeling,
@@ -26,12 +26,73 @@ readDataFOOD <- function() {
                 `9` = "none",
                 .missing = "none"
             ),
-            GPA = as.numeric(GPA)
+            GPA = as.numeric(GPA),
+            employment = recode(employment,
+              '1' = "full time",
+              '2' = "part time",
+              '3' = "no",
+              'nan' = "other",
+              .missing = "other"
+            ),
+            eating_out2 = recode(eating_out,
+              '1' = '0',
+              '2' = '1-2',
+              '3' = '2-3',
+              '4' = '3-5',
+              '5' = 'everyday'
+            ),
+            income2 = recode(income,
+              '1' = '$15000',
+              '2' = '$15000-$30000',
+              '3' = '$30000-$50000',
+              '4' = '$50000-$70000',
+              '5' = '$70000-$100000',
+              '6' = '>$100000',
+              .missing = 'not stated'
+              ),
+            cook2 = recode(cook, 
+              '1' = 'everyday',
+              '2' = 'few times per week',
+              '3' = 'seldom',
+              '4' = 'almost never',
+              '5' = 'never',
+              .missing = 'not stated'
+            ),
+            cuisine = recode(cuisine,
+              '1' = 'American',
+              '2' = 'Mexican/Spanish',
+              '3' = 'Korean/Asian',
+              '4' = 'Indian',
+              '5' = 'International',
+              '6' = 'other',
+              .missing = 'other'
+            ),
+            diet_current_coded = recode(diet_current_coded,
+              '1' = 'healthy/balanced',
+              '2' = 'unhealthy/cheap',
+              '3' = 'monotonous',
+              '4' = 'unclear'
+            ),
+            eating_changes_coded = recode(eating_changes_coded,
+              '1' = 'worse',
+              '2' = 'better',
+              '3' = 'the same',
+              '4' = 'unclear'
+            ),
+            exercise = recode(exercise,
+              '1' = 'everyday',
+              '2' = '2-3 times per week',
+              '3' = 'once a week',
+              '4' = 'sometimes',
+              '5' = 'never',
+              .missing = 'not stated'
+            )
+            
         ) %>%
         mutate_at(vars(GPA), ~ ifelse(is.na(.x), mean(.x, na.rm = TRUE), .x)) %>%
         mutate(GPA = round(GPA, 2))
 
-    return(res)
+    return(data)
 }
 
 parse_data <- function() {

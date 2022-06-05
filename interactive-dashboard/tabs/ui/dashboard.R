@@ -5,20 +5,25 @@ dashboardTabItem <- function() {
   return(
     tabItem(
       tabName = "dashboard",
-
+      h2("Recommender"),
+      "Select apropriate attributes and see what other student chose as their comfort food. This can help you find a food inspiration!",
+      br(),
+      "What is more, you can see some interesting facts concerning the group selected.",
+      br(),br(),
+      
       # DATAFRAME
       fluidRow(
-        tags$head(tags$style(HTML(".small-box {height: 120px}"))),
+        tags$head(tags$style(HTML(".small-box {height: 150px}"))),
         shinydashboard::box(
           width = 3,
-          height = 120,
+          height = 150,
           #tagList("TODO", tags$sup(style = "font-size: 20px", "%")),
           #"Approval Rating", icon = icon("line-chart"), color = COLOR
           flexdashboard::gaugeOutput("gauge2"),
         ),
         shinydashboard::box(
           width = 3,
-          height = 120,
+          height = 150,
           #tagList("TODO", tags$sup(style = "font-size: 20px", "%")),
           #"Approval Rating", icon = icon("line-chart"), color = COLOR
           flexdashboard::gaugeOutput("gauge1"),
@@ -62,7 +67,6 @@ dashboardTabItem <- function() {
         box(
           title = tags$b("Food suggestions"),
           width = 9,
-          p("Select apropriate attributes and see what other student chose as their comfort food. This can help you find a food inspiration!\nWhat is more, you can see some interesting facts concerning the selected group."),
           DT::dataTableOutput("datatable")
         )
       )

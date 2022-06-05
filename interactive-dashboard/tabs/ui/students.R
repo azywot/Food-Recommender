@@ -22,8 +22,8 @@ studentsTabItem <- function() {
                 'Cuisine childhood',
                 'Current diet'
                              ), 
-              selected = 'Gender'),
-          plotOutput("plot_selected_attr")
+              selected = 'Gender')
+          #plotOutput("plot_selected_attr")
           )
       ),
       

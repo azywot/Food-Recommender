@@ -45,10 +45,10 @@ dashboardTabItem <- function() {
             choices = list("Female", "Male", "-"), selected = "-"
           ),
           sliderInput("sliderGPA", tags$b("GPA"),
-            min = 2, max = 5, step = 0.2, value = c(0, 5)
+            min = 2, max = 5, step = 0.2, value = c(2, 5)
           ),
           sliderInput("sliderHEALTH", tags$b("Health assesment"),
-            min = 1, max = 10, step = 1, value = c(0, 10)
+            min = 1, max = 10, step = 1, value = c(1, 10)
           ),
           checkboxGroupInput("checkGroupReason",
             tags$b("Food choice reason"),
@@ -65,8 +65,7 @@ dashboardTabItem <- function() {
           p("Select apropriate attributes and see what other student chose as their comfort food. This can help you find a food inspiration!\nWhat is more, you can see some interesting facts concerning the selected group."),
           DT::dataTableOutput("datatable")
         )
-      ),
-      textOutput("testText")
+      )
     )
   )
 }

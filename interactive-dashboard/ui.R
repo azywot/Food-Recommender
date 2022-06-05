@@ -41,21 +41,7 @@ body <- dashboardBody(
     dashboardTabItem(),
     cuisinesTabItem(),
     healthTabItem(),
-
-    # Students dataset tab
-    tabItem(
-      tabName = "students",
-      h2("Dataset analysis - attributes distribution"),
-      fluidRow(
-        mainPanel(
-          tabsetPanel(
-            tabPanel("Plot", plotOutput("plot")),
-            tabPanel("Summary", verbatimTextOutput("summary")),
-            tabPanel("Table", tableOutput("table"))
-          )
-        )
-      )
-    )
+    studentsTabItem()
   )
 )
 

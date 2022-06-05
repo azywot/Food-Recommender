@@ -17,28 +17,28 @@ dashboardTabItem <- function() {
         shinydashboard::box(
           width = 3,
           height = 150,
+          tags$b("AVERAGE HEALTH RATING:"),
           #tagList("TODO", tags$sup(style = "font-size: 20px", "%")),
           #"Approval Rating", icon = icon("line-chart"), color = COLOR
-          flexdashboard::gaugeOutput("gauge2"),
-        ),
-        shinydashboard::box(
-          width = 3,
-          height = 150,
-          #tagList("TODO", tags$sup(style = "font-size: 20px", "%")),
-          #"Approval Rating", icon = icon("line-chart"), color = COLOR
-          flexdashboard::gaugeOutput("gauge1"),
+          flexdashboard::gaugeOutput("gauge_health"),
         ),
         shinydashboard::valueBox(
           width = 3,
-          tagList(tags$sup(style = "font-size: 15px", "How often do you cook?")), 
+          tagList(tags$b(style = "font-size: 15px","TODO")),
+          "Jeszcze jedno pytanie",
+          icon = icon("question"), color = COLOR
+        ),
+        shinydashboard::valueBox(
+          width = 3,
+          tagList(tags$b(style = "font-size: 15px","How often do you cook?")),
           textOutput("cook_how_often"),
-          icon = icon("users"), color = COLOR
+          icon = icon("question"), color = COLOR
         ),
         shinydashboard::valueBox(
           width = 3,
-          tagList(tags$sup(style = "font-size: 15px", "Eating out per week")), 
+          tagList(tags$b(style = "font-size: 15px","Eating out per week:")), 
           textOutput("eating_out"),
-          icon = icon("users"), color = COLOR
+          icon = icon("question"), color = COLOR
         )
       ),
       fluidRow(

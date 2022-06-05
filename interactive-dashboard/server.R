@@ -64,8 +64,8 @@ function(input, output, session) {
     get_eating_out(dataInput())
   })
 
-  output$gauge1 <- flexdashboard::renderGauge({
-    get_gauge1(dataInput())
+  output$gauge_health <- flexdashboard::renderGauge({
+    get_gauge_health(dataInput())
   })
 
   output$gauge2 <- flexdashboard::renderGauge({

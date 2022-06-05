@@ -27,22 +27,22 @@ get_eating_out <- function(data) {
     "4" = "3-5 times",
     "5" = "every day"
   )
-  # return(paste(result, "\n", ans))
   return(result)
 }
 
-get_gauge1 <- function(data) {
-  val <- mean(data$income, na.rm = TRUE)
+get_gauge_health <- function(data) {
+  val <- mean(data$Health, na.rm = TRUE)
   gauge(
     round(val, 2),
-    min = 1, max = 6, label = paste("INCOME LEVEL"),
+    min = 1, max = 10, label = paste("HEALTH RATE"),
     gaugeSectors(colors = c("#01619A"))
     # gaugeSectors(success = c(6, 5), warning = c(4,3), danger = c(2, 1), colors = c("#CC6699"))
   )
 }
 
 get_gauge2 <- function(data) {
-  val <- mean(data$pay_meal_out, na.rm = TRUE)
+  val <- getmode(data$income)
+  #val <- mean(data$pay_meal_out, na.rm = TRUE)
   gauge(
     round(val, 2),
     min = 1, max = 6, label = paste("MEAL OUT"),

@@ -11,7 +11,7 @@ library(miceadds) # for multiple source files
 library(ggthemes)
 source.all("tabs/server/")
 
-data <- parse_data2()
+data <- parse_data()
 reasons <- c(
   "stress", "boredom", "sadness", "hunger", "laziness",
   "cold weather", "happiness", "watching tv", "none"
